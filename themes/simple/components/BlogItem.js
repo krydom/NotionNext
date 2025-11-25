@@ -105,17 +105,6 @@ export const BlogItem = props => {
             {showPreview && post?.blockMap && (
               <div className='overflow-ellipsis truncate'>
                 <NotionPage post={post} />
-                <div className='pointer-events-none border-t pt-8 border-dashed'>
-                  <div className='w-full justify-start flex'>
-                    <SmartLink
-                      href={post?.href}
-                      passHref
-                      className='hover:bg-opacity-100 hover:scale-105 duration-200 pointer-events-auto transform font-bold text-green-500 cursor-pointer'>
-                      {locale.COMMON.ARTICLE_DETAIL}
-                      <i className='ml-1 fas fa-angle-right' />
-                    </SmartLink>
-                  </div>
-                </div>
                 <hr className='border-dashed py-4' />
               </div>
             )}
