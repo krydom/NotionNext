@@ -233,7 +233,7 @@ const LayoutSlug = props => {
           {/* <AdSlot type={'in-article'} /> */}
           <WWAds orientation='horizontal' className='w-full' />
 
-          <div id='article-wrapper'>
+          <div id='article-wrapper' className='px-1 max-w-4xl'>
             {/* Notion文章主体 */}
             {!lock && <NotionPage post={post} />}
           </div>
