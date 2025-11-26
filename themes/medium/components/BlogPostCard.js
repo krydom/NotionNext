@@ -26,7 +26,7 @@ const BlogPostCard = ({ post, showSummary }) => {
           href={post?.href}
           passHref
           className={
-            'cursor-pointer font-bold  hover:underline text-3xl leading-tight text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500'
+            'cursor-pointer font-bold  hover:underline text-3xl leading-tight text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400'
           }>
           <h2>
             {siteConfig('MEDIUM_POST_LIST_COVER', null, CONFIG) && (
@@ -71,7 +71,7 @@ const BlogPostCard = ({ post, showSummary }) => {
         {showPreview && (
           <div className='overflow-ellipsis truncate'>
             <NotionPage post={post} />
-            <div className='pointer-events-none border-t my-4 border-dashed' />
+            <div className='pointer-events-none border-t pt-9 border-dashed' />
             <div className='block'>
               <SmartLink
                 href={post.href}
