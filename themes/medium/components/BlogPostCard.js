@@ -72,12 +72,14 @@ const BlogPostCard = ({ post, showSummary }) => {
           <div className='overflow-ellipsis truncate'>
             <NotionPage post={post} />
             <div className='pointer-events-none border-t pt-6 border-dashed'>
-              <SmartLink
-                href={post.href}
-                className='inline-block rounded-sm text-blue-600 dark:text-blue-300  text-xs dark:border-gray-800 border hover:text-red-400 transition-all duration-200 hover:border-red-300 h-9 leading-8 px-5'>
-                Continue Reading{' '}
-                <i className='fa-solid fa-angle-right align-middle'></i>
-              </SmartLink>
+              <div className='block'>
+                <SmartLink
+                  href={post.href}
+                  className='inline-block rounded-sm text-blue-600 dark:text-blue-300  text-xs dark:border-gray-800 border hover:text-red-400 transition-all duration-200 hover:border-red-300 h-9 leading-8 px-5'>
+                  Continue Reading{' '}
+                  <i className='fa-solid fa-angle-right align-middle'></i>
+                </SmartLink>
+              </div>
             </div>
           </div>
         )}
