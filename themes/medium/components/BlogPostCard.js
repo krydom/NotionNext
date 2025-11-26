@@ -71,7 +71,7 @@ const BlogPostCard = ({ post, showSummary }) => {
         {showPreview && (
           <div className='overflow-ellipsis truncate'>
             <NotionPage post={post} />
-            <div className='pointer-events-none border-t pt-9 border-dashed' />
+            <div className='pointer-events-none border-t pt-6 border-dashed' />
             <div className='block'>
               <SmartLink
                 href={post.href}
