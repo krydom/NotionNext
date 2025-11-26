@@ -80,6 +80,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                 <i className='fa-solid fa-angle-right align-middle'></i>
               </SmartLink>
             </div>
+          </div>
         )}
       </header>
     </div>
