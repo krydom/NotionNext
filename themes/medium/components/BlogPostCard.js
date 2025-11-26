@@ -77,7 +77,7 @@ const BlogPostCard = ({ post, showSummary }) => {
                   href={post?.href}
                   passHref
                   className='inline-block rounded-sm text-blue-600 dark:text-blue-300  text-xs dark:border-gray-800 border hover:text-red-400 transition-all duration-200 hover:border-red-300 h-9 leading-8 px-5'>
-                  Continue Reading{' '}
+                  {locale.COMMON.ARTICLE_DETAIL}
                   <i className='fa-solid fa-angle-right align-middle'></i>
                 </SmartLink>
               </div>
