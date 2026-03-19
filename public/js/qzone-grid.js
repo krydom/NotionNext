@@ -17,14 +17,13 @@ function applyImageGrid() {
         if (figs.length > 0) {
           var grid = document.createElement('div');
           grid.className = 'qzone-image-grid';
-          grid.style.cssText = 'display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:4px!important;width:100%!important;margin:8px 0!important;';
           figs.forEach(function(f) {
             grid.appendChild(f);
-            f.style.cssText = 'width:100%!important;margin:0!important;overflow:hidden!important;';
+            f.className += ' qzone-grid-figure';
             var inner = f.querySelector(':scope > div');
-            if (inner) inner.style.cssText = 'position:relative!important;display:block!important;width:100%!important;padding-bottom:100%!important;height:0!important;';
+            if (inner) inner.className += ' qzone-grid-inner';
             var img = f.querySelector('img');
-            if (img) img.style.cssText = 'position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:4px!important;';
+            if (img) img.className += ' qzone-grid-img';
           });
           children[i].after(grid);
         }
