@@ -40,9 +40,15 @@
   border-radius: 4px !important;
 }
 
-/* ===== 放大时恢复原始比例 ===== */
-img.qzone-grid-img.medium-zoom-image--opened {
-  position: fixed !important;
+/* ===== 放大时：恢复原始比例 ===== */
+.qzone-grid-inner.qzone-inner-zoomed {
+  padding-bottom: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+img.qzone-grid-img.qzone-zoomed {
+  position: relative !important;
   width: auto !important;
   height: auto !important;
   max-height: 90vh !important;
