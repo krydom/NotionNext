@@ -8,11 +8,6 @@
 
 /* medium-zoom 放大时恢复完整图片 */
 img.medium-zoom-image--opened {
-  position: fixed !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 90vw !important;
-  max-height: 90vh !important;
   object-fit: contain !important;
-  padding-bottom: 0 !important;
+  height: auto !important;
 }
