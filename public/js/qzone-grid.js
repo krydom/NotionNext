@@ -16,21 +16,16 @@ function applyImageGrid() {
         }
         if (figs.length > 0) {
           var grid = document.createElement('div');
-          grid.className = 'qzone-image-grid';
+          grid.style.cssText = 'display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:4px!important;width:100%!important;margin:8px 0!important;';
           figs.forEach(function(f) {
             grid.appendChild(f);
-            f.className += ' qzone-grid-figure';
+            f.style.cssText = 'width:100%!important;margin:0!important;overflow:hidden!important;';
             var inner = f.querySelector(':scope > div');
-            if (inner) {
-              inner.removeAttribute('style');
-              inner.className += ' qzone-grid-inner';
-            }
+            if (inner) inner.style.cssText = 'position:relative!important;display:block!important;width:100%!important;padding-bottom:100%!important;height:0!important;';
             var img = f.querySelector('img');
             if (img) {
-              // 保存原图地址，放大时用
-              img.dataset.originalSrc = img.src;
-              img.removeAttribute('style');
-              img.className += ' qzone-grid-img';
+              img.style.cssText = 'position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:4px!important;';
+              img.dataset.qzoneGrid = 'true';
             }
           });
           children[i].after(grid);
@@ -43,34 +38,25 @@ function applyImageGrid() {
   });
 }
 
-// 监听 medium-zoom 放大/缩小，切换样式
-function watchZoom() {
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(m) {
-      if (m.type !== 'attributes' || m.attributeName !== 'class') return;
-      var img = m.target;
-      if (!img.classList.contains('qzone-grid-img')) return;
+// 监听放大/缩小，直接改 inline style
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(m) {
+    if (m.type !== 'attributes' || m.attributeName !== 'class') return;
+    var img = m.target;
+    if (!img.dataset || img.dataset.qzoneGrid !== 'true') return;
+    var inner = img.closest('figure > div');
 
-      var inner = img.closest('.qzone-grid-inner');
-
-      if (img.classList.contains('medium-zoom-image--opened')) {
-        // 放大中：临时移除九宫格裁剪
-        img.classList.add('qzone-zoomed');
-        if (inner) inner.classList.add('qzone-inner-zoomed');
-      } else {
-        // 关闭：恢复九宫格
-        img.classList.remove('qzone-zoomed');
-        if (inner) inner.classList.remove('qzone-inner-zoomed');
-      }
-    });
+    if (img.classList.contains('medium-zoom-image--opened')) {
+      // 放大：恢复原图
+      img.style.cssText = 'position:relative!important;width:auto!important;height:auto!important;max-height:90vh!important;max-width:90vw!important;object-fit:contain!important;border-radius:4px!important;';
+      if (inner) inner.style.cssText = 'display:block!important;width:auto!important;height:auto!important;padding-bottom:0!important;';
+    } else if (!img.classList.contains('medium-zoom-image--opened')) {
+      // 关闭：恢复九宫格
+      img.style.cssText = 'position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:4px!important;';
+      if (inner) inner.style.cssText = 'position:relative!important;display:block!important;width:100%!important;padding-bottom:100%!important;height:0!important;';
+    }
   });
-
-  observer.observe(document.body, {
-    attributes: true,
-    attributeFilter: ['class'],
-    subtree: true
-  });
-}
+});
+observer.observe(document.body, { attributes: true, attributeFilter: ['class'], subtree: true });
 
 setInterval(applyImageGrid, 1000);
-watchZoom();
