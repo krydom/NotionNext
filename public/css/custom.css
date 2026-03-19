@@ -6,20 +6,25 @@
     content: "\f05a";
 }
 
-/* ===== QQ空间图片：分隔线后的连续图片自动网格排列 ===== */
-.notion-hr + .notion-asset-wrapper,
-.notion-asset-wrapper + .notion-asset-wrapper {
+/* ===== QQ空间图片：连续图片自动九宫格 ===== */
+.notion-hr + figure.notion-asset-wrapper-image,
+figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image {
   display: inline-block !important;
   width: 32% !important;
   margin: 0.5% !important;
   vertical-align: top;
 }
 
-.notion-hr + .notion-asset-wrapper img,
-.notion-asset-wrapper + .notion-asset-wrapper img {
+.notion-hr + figure.notion-asset-wrapper-image > div,
+figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image > div {
   width: 100% !important;
+  max-width: 100% !important;
+}
+
+.notion-hr + figure.notion-asset-wrapper-image img,
+figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image img {
+  width: 100% !important;
+  height: auto !important;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 4px;
-  cursor: pointer;
-}
