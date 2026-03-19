@@ -1,8 +1,37 @@
-/* 静态文件导入 自定义样式*/
-
 #theme-fukasawa .sideLeft hr{
     opacity: .04;
 }
 .fa-info:before {
     content: "\f05a";
+}
+
+/* ===== 九宫格图片：正方形裁剪预览 ===== */
+.notion-row .notion-column {
+  overflow: hidden;
+}
+
+.notion-row .notion-column .notion-asset-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  padding-bottom: 100% !important;
+  height: 0 !important;
+  overflow: hidden;
+}
+
+.notion-row .notion-column .notion-asset-wrapper img {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.notion-row + .notion-row {
+  margin-top: 4px !important;
+}
+
+.notion-row .notion-column + .notion-column {
+  margin-left: 4px !important;
 }
