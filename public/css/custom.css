@@ -7,18 +7,20 @@
 }
 
 /* ===== QQ空间图片：连续图片自动九宫格 ===== */
-hr.notion-hr + figure.notion-asset-wrapper-image,
-figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image {
+#notion-article hr.notion-hr + figure.notion-asset-wrapper-image,
+#notion-article figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image {
   display: inline-block !important;
   width: 32% !important;
   max-width: 32% !important;
   margin: 0.5% !important;
-  vertical-align: top;
+  padding: 0 !important;
+  vertical-align: top !important;
   overflow: hidden !important;
+  float: left !important;
 }
 
-hr.notion-hr + figure.notion-asset-wrapper-image > div,
-figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image > div {
+#notion-article hr.notion-hr + figure.notion-asset-wrapper-image > div,
+#notion-article figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image > div {
   position: relative !important;
   display: block !important;
   width: 100% !important;
@@ -28,8 +30,8 @@ figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image > div {
   flex-direction: unset !important;
 }
 
-hr.notion-hr + figure.notion-asset-wrapper-image img,
-figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image img {
+#notion-article hr.notion-hr + figure.notion-asset-wrapper-image img,
+#notion-article figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image img {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -37,4 +39,9 @@ figure.notion-asset-wrapper-image + figure.notion-asset-wrapper-image img {
   height: 100% !important;
   object-fit: cover !important;
   border-radius: 4px;
+}
+
+/* 九宫格后面的非图片元素清除浮动 */
+#notion-article figure.notion-asset-wrapper-image + :not(figure.notion-asset-wrapper-image) {
+  clear: both !important;
 }
